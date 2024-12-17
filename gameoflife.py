@@ -6,7 +6,10 @@ matrix[2][2] = 1
 matrix[2][3] = 1
 matrix[0][3] = 1
 
-for i in range (0,h):
-    for j in range (0,w):
-        print(matrix[i][j], end="")
-    print()
+def print_matrix(matrix):
+    for i in range (0,h):
+        for j in range (0,w):
+            print(matrix[i][j], end="")
+        print()
+
+print_matrix(matrix)
