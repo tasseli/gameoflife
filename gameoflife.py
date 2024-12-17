@@ -12,6 +12,14 @@ def set_matrix_to_contain_glider(matrix):
     matrix[0][3] = 1
     return matrix
 
+#def calculate_next_round_matrix(matrix):
+#    for i in range (0,h):
+#        for j in range (0,w):
+            #if matrix[i][j] has 3 neighbors or 4 neighbors,
+                #generate cell's value as 1 next round
+            #else:
+                #generate cell's value as 0 next round    
+
 def print_matrix(matrix):
     for i in range (0,h):
         for j in range (0,w):
