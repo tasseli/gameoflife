@@ -12,10 +12,28 @@ def set_matrix_to_contain_glider(matrix):
     matrix[0][3] = 1
     return matrix
 
+calculate_neighbors(matrix, coords, w, h):
+    count = 0
+    if coords[0] == 0:
+    # location is on x==0
+        pass
+        # skip neighbors before left side
+    elif coords[0] == w-1:
+        pass
+        # skip neighbors after right side
+    if coords[1] == 0:
+    # location is on y==0
+        pass
+        # skip neighbors before first row
+    elif coords[1] == h-1:
+        pass
+        # skip neighbors after last row
+    return count
+
 #def calculate_next_round_matrix(matrix):
 #    for i in range (0,h):
 #        for j in range (0,w):
-            #if matrix[i][j] has 3 neighbors or 4 neighbors,
+            #if calculate_neighbors(matrix, [j,i], w, h) has 3 neighbors or 4 neighbors,
                 #generate cell's value as 1 next round
             #else:
                 #generate cell's value as 0 next round    
