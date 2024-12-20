@@ -12,14 +12,21 @@ def set_matrix_to_contain_glider(matrix):
     matrix[0][3] = 1
     return matrix
 
-calculate_neighbors(matrix, coords, w, h):
+def calculate_neighbors(matrix, coords, w, h):
+    x = coords[0]
+    y = coords[1]
+    potential_neighbors = [[x-1,y-1],[x-1,y],[x-1,y+1],[x,y-1],[x,y+1],[x+1,y-1],[x+1,y],[x+1,y+1]]
     count = 0
     if coords[0] == 0:
     # location is on x==0
-        pass
+        potential_neighbors.pop(0)
+        potential_neighbors.pop(0)
+        potential_neighbors.pop(0)
         # skip neighbors before left side
     elif coords[0] == w-1:
-        pass
+        porential_neighbors.pop()
+        porential_neighbors.pop()
+        porential_neighbors.pop()
         # skip neighbors after right side
     if coords[1] == 0:
     # location is on y==0
