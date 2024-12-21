@@ -30,11 +30,12 @@ def calculate_neighbors(matrix, coords, w, h):
         # skip neighbors after right side
     if coords[1] == 0:
     # location is on y==0
-        pass
+        potential_neighbors.remove([x,y-1])
         # skip neighbors before first row
     elif coords[1] == h-1:
-        pass
+        potential_neighbors.remove([x,y+1])
         # skip neighbors after last row
+    count = len(potential_neighbors)
     return count
 
 #def calculate_next_round_matrix(matrix):
