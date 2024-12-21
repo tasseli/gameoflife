@@ -2,7 +2,7 @@ w = 8
 h = 5
 
 def get_empty_matrix(w, h):
-    matrix = [[0 for x in range(w)] for y in range(h)] 
+    matrix = [[0 for y in range(h)] for x in range(w)] 
     return matrix
 
 def set_matrix_to_contain_glider(matrix):
@@ -28,33 +28,51 @@ def calculate_neighbors(matrix, coords, w, h):
         potential_neighbors.pop()
         potential_neighbors.pop()
         # skip neighbors after right side
+        print("potential neighbors after popping x+1s: ")
+        print(potential_neighbors)
     if coords[1] == 0:
     # location is on y==0
         potential_neighbors.remove([x,y-1])
+        if [x-1,y-1] in potential_neighbors:
+            potential_neighbors.remove([x-1,y-1])
+        if [x+1,y-1] in potential_neighbors:
+            potential_neighbors.remove([x+1,y-1])
         # skip neighbors before first row
     elif coords[1] == h-1:
         potential_neighbors.remove([x,y+1])
+        if [x-1,y+1] in potential_neighbors:
+            potential_neighbors.remove([x-1,y+1])
+        if [x+1,y+1] in potential_neighbors:
+            potential_neighbors.remove([x+1,y+1])
         # skip neighbors after last row
-    count = len(potential_neighbors)
+
+    print("For cell ", end="")
+    print(coords)
+    for neighbor in potential_neighbors:
+        print([neighbor[0]], [neighbor[1]])
+        print(matrix[neighbor[0]][neighbor[1]])
+        if matrix[neighbor[0]][neighbor[1]] == 1:
+            count += 1
+    print("Sum: ", count)
     return count
 
 def calculate_next_round_matrix(matrix):
     new_matrix = get_empty_matrix(w, h)
     for i in range (0,h):
         for j in range (0,w):
-            n = calculate_neighbors(matrix, [j,i], w, h)
+            n = calculate_neighbors(matrix, [j, i], w, h)
             if n == 3 or n == 4:
                 #generate cell's value as 1 next round
-                matrix[i][j] = 1
+                new_matrix[j][i] = 1
             else:
                 #generate cell's value as 0 next round    
-                matrix[i][j] = 0
+                new_matrix[j][i] = 0
     return new_matrix
 
 def print_matrix(matrix):
     for i in range (0,h):
         for j in range (0,w):
-            print(matrix[i][j], end="")
+            print(matrix[j][i], end="")
         print()
 
 # Creates a list containing 5 lists, each of 8 items, all set to 0
