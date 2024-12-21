@@ -1,8 +1,8 @@
 import random
 
 debug = False
-w = 8
-h = 5
+w = 40
+h = 20
 
 # Creates a list containing 5 lists, each of 8 items, all set to 0
 def get_empty_matrix(w, h):
@@ -10,11 +10,11 @@ def get_empty_matrix(w, h):
     return matrix
 
 def set_matrix_to_contain_glider(matrix):
-    matrix[3][2] = 1
-    matrix[4][2] = 1
-    matrix[4][3] = 1
-    matrix[4][4] = 1
-    matrix[2][3] = 1
+    matrix[3][12] = 1
+    matrix[4][12] = 1
+    matrix[4][13] = 1
+    matrix[4][14] = 1
+    matrix[2][13] = 1
     return matrix
 
 def calculate_neighbors(matrix, coords, w, h):
