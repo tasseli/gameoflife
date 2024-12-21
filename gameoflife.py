@@ -1,15 +1,19 @@
+import random
+
 w = 8
 h = 5
 
+# Creates a list containing 5 lists, each of 8 items, all set to 0
 def get_empty_matrix(w, h):
     matrix = [[0 for y in range(h)] for x in range(w)] 
     return matrix
 
 def set_matrix_to_contain_glider(matrix):
-    matrix[1][2] = 1
-    matrix[2][2] = 1
+    matrix[3][2] = 1
+    matrix[4][2] = 1
+    matrix[4][3] = 1
+    matrix[4][4] = 1
     matrix[2][3] = 1
-    matrix[0][3] = 1
     return matrix
 
 def calculate_neighbors(matrix, coords, w, h):
@@ -87,10 +91,11 @@ def print_matrix(matrix):
             print(matrix[j][i], end="")
         print()
 
-# Creates a list containing 5 lists, each of 8 items, all set to 0
 matrix = get_empty_matrix(w, h)
 matrix = set_matrix_to_contain_glider(matrix)
 print_matrix(matrix)
-input_value = input("Press enter")
-matrix = calculate_next_round_matrix(matrix)
-print_matrix(matrix)
+input_value = ""
+while input_value != "q":
+    input_value = input("Enter to continue / enter 'q' to quit> ")
+    matrix = calculate_next_round_matrix(matrix)
+    print_matrix(matrix)
