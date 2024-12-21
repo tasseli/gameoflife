@@ -24,9 +24,9 @@ def calculate_neighbors(matrix, coords, w, h):
         potential_neighbors.pop(0)
         # skip neighbors before left side
     elif coords[0] == w-1:
-        porential_neighbors.pop()
-        porential_neighbors.pop()
-        porential_neighbors.pop()
+        potential_neighbors.pop()
+        potential_neighbors.pop()
+        potential_neighbors.pop()
         # skip neighbors after right side
     if coords[1] == 0:
     # location is on y==0
@@ -39,15 +39,17 @@ def calculate_neighbors(matrix, coords, w, h):
     return count
 
 def calculate_next_round_matrix(matrix):
+    new_matrix = get_empty_matrix(w, h)
     for i in range (0,h):
         for j in range (0,w):
             n = calculate_neighbors(matrix, [j,i], w, h)
-            if n == 3 or n == 4
+            if n == 3 or n == 4:
                 #generate cell's value as 1 next round
-                pass
+                matrix[i][j] = 1
             else:
                 #generate cell's value as 0 next round    
-                pass
+                matrix[i][j] = 0
+    return new_matrix
 
 def print_matrix(matrix):
     for i in range (0,h):
@@ -58,4 +60,7 @@ def print_matrix(matrix):
 # Creates a list containing 5 lists, each of 8 items, all set to 0
 matrix = get_empty_matrix(w, h)
 matrix = set_matrix_to_contain_glider(matrix)
+print_matrix(matrix)
+input_value = input("Press enter")
+matrix = calculate_next_round_matrix(matrix)
 print_matrix(matrix)
