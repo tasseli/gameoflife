@@ -45,6 +45,8 @@ def calculate_neighbors(matrix, coords, w, h):
         if [x+1,y+1] in potential_neighbors:
             potential_neighbors.remove([x+1,y+1])
         # skip neighbors after last row
+    print("potential neighbors after popping ys: ")
+    print(potential_neighbors)
 
     print("For cell ", end="")
     print(coords)
@@ -61,12 +63,22 @@ def calculate_next_round_matrix(matrix):
     for i in range (0,h):
         for j in range (0,w):
             n = calculate_neighbors(matrix, [j, i], w, h)
-            if n == 3 or n == 4:
-                #generate cell's value as 1 next round
-                new_matrix[j][i] = 1
+            if (matrix[j][i] == 1):
+                #alive previously
+                if (n == 2 or n == 3):
+                    #generate cell's value as 1 next round
+                    new_matrix[j][i] = 1
+                else:
+                    #generate cell's value as 0 next round    
+                    new_matrix[j][i] = 0                    
             else:
-                #generate cell's value as 0 next round    
-                new_matrix[j][i] = 0
+                #dead previously
+                if n == 3:
+                    #generate cell's value as 1 next round
+                    new_matrix[j][i] = 1
+                else:
+                    #generate cell's value as 0 next round    
+                    new_matrix[j][i] = 0
     return new_matrix
 
 def print_matrix(matrix):
