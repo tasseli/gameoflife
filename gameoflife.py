@@ -38,13 +38,16 @@ def calculate_neighbors(matrix, coords, w, h):
     count = len(potential_neighbors)
     return count
 
-#def calculate_next_round_matrix(matrix):
-#    for i in range (0,h):
-#        for j in range (0,w):
-            #if calculate_neighbors(matrix, [j,i], w, h) has 3 neighbors or 4 neighbors,
+def calculate_next_round_matrix(matrix):
+    for i in range (0,h):
+        for j in range (0,w):
+            n = calculate_neighbors(matrix, [j,i], w, h)
+            if n == 3 or n == 4
                 #generate cell's value as 1 next round
-            #else:
+                pass
+            else:
                 #generate cell's value as 0 next round    
+                pass
 
 def print_matrix(matrix):
     for i in range (0,h):
