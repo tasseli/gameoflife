@@ -1,6 +1,5 @@
 import random
 
-debug = False
 w = 40
 h = 20
 
@@ -33,9 +32,6 @@ def calculate_neighbors(matrix, coords, w, h):
         potential_neighbors.pop()
         potential_neighbors.pop()
         # skip neighbors after right side
-        if debug:
-            print("potential neighbors after popping x+1s: ")
-            print(potential_neighbors)
     if coords[1] == 0:
     # location is on y==0
         potential_neighbors.remove([x,y-1])
@@ -51,20 +47,9 @@ def calculate_neighbors(matrix, coords, w, h):
         if [x+1,y+1] in potential_neighbors:
             potential_neighbors.remove([x+1,y+1])
         # skip neighbors after last row
-    if debug:
-        print("potential neighbors after popping ys: ")
-        print(potential_neighbors)
-
-        print("For cell ", end="")
-        print(coords)
     for neighbor in potential_neighbors:
-        if debug:
-            print([neighbor[0]], [neighbor[1]])
-            print(matrix[neighbor[0]][neighbor[1]])
         if matrix[neighbor[0]][neighbor[1]] == 1:
             count += 1
-    if debug:
-        print("Sum: ", count)
     return count
 
 def calculate_next_round_matrix(matrix):
