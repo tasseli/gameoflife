@@ -40,12 +40,12 @@ def calculate_neighbors(matrix, coords, w, h):
         if [x+1,y-1] in potential_neighbors:
             potential_neighbors.remove([x+1,y-1])
         # skip neighbors before first row
-    elif coords[1] == h-1:
-        potential_neighbors.remove([x,y+1])
-        if [x-1,y+1] in potential_neighbors:
-            potential_neighbors.remove([x-1,y+1])
-        if [x+1,y+1] in potential_neighbors:
-            potential_neighbors.remove([x+1,y+1])
+    elif coords[1] == h - 1:
+        potential_neighbors.remove([x, y + 1])
+        if [x - 1, y + 1] in potential_neighbors:
+            potential_neighbors.remove([x - 1, y + 1])
+        if [x + 1, y + 1] in potential_neighbors:
+            potential_neighbors.remove([x + 1, y + 1])
         # skip neighbors after last row
     for neighbor in potential_neighbors:
         if matrix[neighbor[0]][neighbor[1]] == 1:
