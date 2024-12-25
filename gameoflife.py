@@ -54,8 +54,8 @@ def calculate_neighbors(matrix, coords, w, h):
 
 def calculate_next_round_matrix(matrix):
     new_matrix = get_empty_matrix(w, h)
-    for i in range (0,h):
-        for j in range (0,w):
+    for i in range (0, h):
+        for j in range (0, w):
             n = calculate_neighbors(matrix, [j, i], w, h)
             if (matrix[j][i] == 1):
                 #alive previously
